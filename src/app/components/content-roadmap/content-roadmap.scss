@@ -1,0 +1,22 @@
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40vh;
+  max-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    height: 35vh;
+    max-height: 300px;
+  }
+}
+
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}

@@ -1,0 +1,19 @@
+.nav-button {
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-button.active {
+  background-color: #4A5568;
+  color: #FFFFFF;
+}
+
+.nav-button:not(.active):hover {
+  background-color: #E2E8F0;
+}
+
+.nav-button:focus {
+  outline: 2px solid #4A5568;
+  outline-offset: 2px;
+}

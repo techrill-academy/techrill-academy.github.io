@@ -1,0 +1,107 @@
+<section class="module-detail" role="main">
+  @if (loading) {
+    <div class="flex justify-center items-center py-12">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" role="status" aria-label="Loading"></div>
+    </div>
+  } @else if (module) {
+    <!-- Header -->
+    <div class="mb-8">
+      <button 
+        (click)="goBack()" 
+        class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1"
+        aria-label="Go back to curriculum explorer">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Explorer
+      </button>
+      
+      <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ module.name }}</h1>
+        <p class="text-lg text-gray-600 leading-relaxed">{{ module.description }}</p>
+      </div>
+    </div>
+
+    <!-- Topics and Subtopics -->
+    @for (topic of module.topics; track topic.id) {
+      <div class="mb-8 bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+          <h2 class="text-xl font-semibold text-gray-800">{{ topic.name }}</h2>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid gap-6">
+            @for (subtopic of topic.subtopics; track subtopic.id) {
+              <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors duration-200">
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ subtopic.subTopic }}</h3>
+                    @if (subtopic.description) {
+                      <p class="text-gray-600 mb-4">{{ subtopic.description }}</p>
+                    }
+                    
+                    <!-- Video embed if available -->
+                    @if (subtopic.video) {
+                      <div class="mb-4">
+                        <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+                          <iframe 
+                            [src]="getEmbedUrl(subtopic.video)"
+                            class="w-full h-full"
+                            frameborder="0"
+                            allowfullscreen
+                            [title]="'Video: ' + subtopic.subTopic"
+                            loading="lazy">
+                          </iframe>
+                        </div>
+                        <div class="mt-2 flex items-center text-sm text-gray-500">
+                          <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path>
+                          </svg>
+                          <a 
+                            [href]="subtopic.video" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="text-blue-600 hover:text-blue-800 focus:outline-none focus:underline"
+                            [attr.aria-label]="'Watch ' + subtopic.subTopic + ' video on YouTube'">
+                            Watch on YouTube
+                          </a>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                  
+                  <div class="ml-4 flex flex-col items-center">
+                    <span 
+                      [title]="getVideoIconTitle(!!subtopic.video)" 
+                      class="text-2xl mb-1"
+                      [attr.aria-label]="getVideoIconTitle(!!subtopic.video)">
+                      {{ getVideoIcon(!!subtopic.video) }}
+                    </span>
+                    @if (subtopic.video) {
+                      <span class="text-xs text-green-600 font-medium">Available</span>
+                    } @else {
+                      <span class="text-xs text-yellow-600 font-medium">Coming Soon</span>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="text-center py-12">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Module Not Found</h2>
+      <p class="text-gray-600 mb-6">The requested module could not be found.</p>
+      <button 
+        (click)="goBack()" 
+        class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Explorer
+      </button>
+    </div>
+  }
+</section>

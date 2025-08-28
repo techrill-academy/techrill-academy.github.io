@@ -1,0 +1,71 @@
+<section class="curriculum-explorer" role="main">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold text-gray-800">Curriculum Explorer</h2>
+    <p class="mt-2 text-gray-600">Filter and explore the complete GitHub Copilot curriculum. Click on a card to learn more about the module.</p>
+  </div>
+
+  <!-- Module Filters -->
+  <div class="flex flex-wrap justify-center gap-2 mb-8" role="toolbar" aria-label="Module filters">
+    @for (module of modules; track module) {
+      <button 
+        (click)="filterByModule(module)" 
+        [class]="'filter-button text-sm py-2 px-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ' + (activeFilter === module ? 'active' : '')"
+        [attr.aria-pressed]="activeFilter === module"
+        [attr.aria-label]="'Filter by ' + getModuleShortName(module)">
+        {{ getModuleShortName(module) }}
+      </button>
+    }
+  </div>
+
+  <!-- Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="grid" aria-label="Curriculum items">
+    @for (item of filteredItems; track item.id) {
+      <div 
+        class="topic-card bg-white p-5 rounded-xl shadow-sm border border-gray-200 cursor-pointer transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        (click)="onCardClick(item)"
+        (keydown.enter)="onCardClick(item)"
+        (keydown.space)="onCardClick(item)"
+        tabindex="0"
+        role="gridcell"
+        [attr.aria-label]="'Navigate to ' + item.module.split('. ')[1] + ' module: ' + item.subTopic">
+        
+        <div class="flex justify-between items-start">
+          <div class="flex-1">
+            <p class="text-xs font-semibold uppercase tracking-wider text-blue-500 mb-1">
+              {{ item.module.split('. ')[1] }} - {{ item.topic }}
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ item.subTopic }}</h4>
+            @if (item.description) {
+              <p class="text-sm text-gray-600 line-clamp-2">{{ item.description }}</p>
+            }
+          </div>
+          
+          <div class="ml-4 flex flex-col items-center">
+            <span 
+              [title]="getVideoIconTitle(!!item.video)" 
+              class="text-2xl mb-1"
+              [attr.aria-label]="getVideoIconTitle(!!item.video)">
+              {{ getVideoIcon(!!item.video) }}
+            </span>
+            @if (item.video) {
+              <span class="text-xs text-green-600 font-medium">Available</span>
+            } @else {
+              <span class="text-xs text-yellow-600 font-medium">Coming Soon</span>
+            }
+          </div>
+        </div>
+        
+        <div class="mt-4 flex items-center text-xs text-gray-500">
+          <span class="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2" aria-hidden="true"></span>
+          <span>Click to explore module</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (filteredItems.length === 0) {
+    <div class="text-center py-12">
+      <p class="text-gray-500 text-lg">No items found for the selected filter.</p>
+    </div>
+  }
+</section>
