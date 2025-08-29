@@ -16,8 +16,13 @@ export interface Module {
 }
 
 export interface Topic {
-  id: string;
+  id: number;
   moduleId: string;
   name: string;
   subtopics: CurriculumItem[];
+}
+
+// New root structure interface for the JSON data
+export interface CurriculumData {
+  modules: Module[];
 }
