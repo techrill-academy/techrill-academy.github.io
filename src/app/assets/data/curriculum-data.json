@@ -31,7 +31,7 @@
     "module": "I. Foundations",
     "topic": "Installation",
     "subTopic": "Installing in VS Code",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=EUJ1uH8W4ks",
     "description": "Step-by-step guide to installing and configuring GitHub Copilot in Visual Studio Code.",
     "moduleDescription": "Learn the foundational concepts of GitHub Copilot, from installation to basic usage patterns."
   },
@@ -39,8 +39,8 @@
     "id": 5,
     "module": "I. Foundations",
     "topic": "Installation",
-    "subTopic": "Installing in JetBrains IDEs",
-    "video": null,
+    "subTopic": "Installing in IntelliJ IDEA",
+    "video": "https://www.youtube.com/watch?v=-w8y77-2vVY",
     "description": "How to set up GitHub Copilot in JetBrains development environments.",
     "moduleDescription": "Learn the foundational concepts of GitHub Copilot, from installation to basic usage patterns."
   },
@@ -103,7 +103,7 @@
     "module": "II. Core Features",
     "topic": "Copilot Chat",
     "subTopic": "Using Context Variables",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=hJIg8lGtIRU",
     "description": "Use context variables to provide better context for more accurate suggestions.",
     "moduleDescription": "Dive deep into the core features that make GitHub Copilot a powerful coding companion."
   },
@@ -116,8 +116,17 @@
     "description": "Access Copilot chat features directly on GitHub.com and mobile devices.",
     "moduleDescription": "Dive deep into the core features that make GitHub Copilot a powerful coding companion."
   },
-  {
+   {
     "id": 14,
+    "module": "II. Core Features",
+    "topic": "Copilot Chat",
+    "subTopic": "Chat on VS Code",
+    "video": "https://www.youtube.com/watch?v=QptWTiFLUOE",
+    "description": "Access Copilot chat features directly in Visual Studio Code.",
+    "moduleDescription": "Dive deep into the core features that make GitHub Copilot a powerful coding companion."
+  },
+  {
+    "id": 15,
     "module": "II. Core Features",
     "topic": "Lifecycle Automation",
     "subTopic": "Generating Commit Messages",
@@ -126,25 +135,25 @@
     "moduleDescription": "Dive deep into the core features that make GitHub Copilot a powerful coding companion."
   },
   {
-    "id": 15,
+    "id": 16,
     "module": "II. Core Features",
     "topic": "Lifecycle Automation",
     "subTopic": "Generating PR Summaries",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=Pq_6AhwtOHw",
     "description": "Create comprehensive pull request summaries with Copilot assistance.",
     "moduleDescription": "Dive deep into the core features that make GitHub Copilot a powerful coding companion."
   },
   {
-    "id": 16,
+    "id": 17,
     "module": "II. Core Features",
     "topic": "Lifecycle Automation",
     "subTopic": "AI-Powered Code Review",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=fRBS7mLw560",
     "description": "Enhance your code review process with AI-powered insights and suggestions.",
     "moduleDescription": "Dive deep into the core features that make GitHub Copilot a powerful coding companion."
   },
   {
-    "id": 17,
+    "id": 18,
     "module": "III. Agents",
     "topic": "Coding Agent",
     "subTopic": "Issue to Pull Request Workflow",
@@ -153,7 +162,7 @@
     "moduleDescription": "Explore the autonomous capabilities of GitHub Copilot agents for enhanced productivity."
   },
   {
-    "id": 18,
+    "id": 19,
     "module": "III. Agents",
     "topic": "Coding Agent",
     "subTopic": "Writing Agent-Friendly Issues",
@@ -162,7 +171,7 @@
     "moduleDescription": "Explore the autonomous capabilities of GitHub Copilot agents for enhanced productivity."
   },
   {
-    "id": 19,
+    "id": 20,
     "module": "III. Agents",
     "topic": "Copilot Edits",
     "subTopic": "Agent Mode vs. Edit Mode",
@@ -171,7 +180,7 @@
     "moduleDescription": "Explore the autonomous capabilities of GitHub Copilot agents for enhanced productivity."
   },
   {
-    "id": 20,
+    "id": 21,
     "module": "III. Agents",
     "topic": "Copilot in the CLI",
     "subTopic": "Getting Command Suggestions",
@@ -180,7 +189,7 @@
     "moduleDescription": "Explore the autonomous capabilities of GitHub Copilot agents for enhanced productivity."
   },
   {
-    "id": 21,
+    "id": 22,
     "module": "III. Agents",
     "topic": "Copilot in the CLI",
     "subTopic": "Explaining Complex Commands",
@@ -189,7 +198,7 @@
     "moduleDescription": "Explore the autonomous capabilities of GitHub Copilot agents for enhanced productivity."
   },
   {
-    "id": 22,
+    "id": 23,
     "module": "IV. Prompting",
     "topic": "Principles",
     "subTopic": "Breaking Down Complex Tasks",
@@ -198,7 +207,7 @@
     "moduleDescription": "Master the art of prompting to get the most effective results from GitHub Copilot."
   },
   {
-    "id": 23,
+    "id": 24,
     "module": "IV. Prompting",
     "topic": "Principles",
     "subTopic": "Providing Examples (Few-Shot)",
@@ -207,7 +216,7 @@
     "moduleDescription": "Master the art of prompting to get the most effective results from GitHub Copilot."
   },
   {
-    "id": 24,
+    "id": 25,
     "module": "IV. Prompting",
     "topic": "Principles",
     "subTopic": "Iterating and Refining Prompts",
@@ -216,7 +225,7 @@
     "moduleDescription": "Master the art of prompting to get the most effective results from GitHub Copilot."
   },
   {
-    "id": 25,
+    "id": 26,
     "module": "IV. Prompting",
     "topic": "Context",
     "subTopic": "The @workspace Agent",
@@ -225,7 +234,7 @@
     "moduleDescription": "Master the art of prompting to get the most effective results from GitHub Copilot."
   },
   {
-    "id": 26,
+    "id": 27,
     "module": "IV. Prompting",
     "topic": "Context",
     "subTopic": "Managing Chat History",
@@ -234,7 +243,7 @@
     "moduleDescription": "Master the art of prompting to get the most effective results from GitHub Copilot."
   },
   {
-    "id": 27,
+    "id": 28,
     "module": "IV. Prompting",
     "topic": "Evaluation",
     "subTopic": "Mitigating Security Risks",
@@ -243,7 +252,7 @@
     "moduleDescription": "Master the art of prompting to get the most effective results from GitHub Copilot."
   },
   {
-    "id": 28,
+    "id": 29,
     "module": "V. Customization",
     "topic": "Instructions",
     "subTopic": "Repository-Level Instructions",
@@ -252,7 +261,7 @@
     "moduleDescription": "Customize GitHub Copilot to work better with your specific development needs and preferences."
   },
   {
-    "id": 29,
+    "id": 30,
     "module": "V. Customization",
     "topic": "Instructions",
     "subTopic": "Global vs. Workspace Instructions",
@@ -261,7 +270,7 @@
     "moduleDescription": "Customize GitHub Copilot to work better with your specific development needs and preferences."
   },
   {
-    "id": 30,
+    "id": 31,
     "module": "V. Customization",
     "topic": "Prompts",
     "subTopic": "Creating a Reusable Prompt",
@@ -270,7 +279,7 @@
     "moduleDescription": "Customize GitHub Copilot to work better with your specific development needs and preferences."
   },
   {
-    "id": 31,
+    "id": 32,
     "module": "V. Customization",
     "topic": "Ecosystem",
     "subTopic": "Switching AI Models",
@@ -279,7 +288,7 @@
     "moduleDescription": "Customize GitHub Copilot to work better with your specific development needs and preferences."
   },
   {
-    "id": 32,
+    "id": 33,
     "module": "V. Customization",
     "topic": "Ecosystem",
     "subTopic": "Exploring Copilot Extensions",
@@ -288,7 +297,7 @@
     "moduleDescription": "Customize GitHub Copilot to work better with your specific development needs and preferences."
   },
   {
-    "id": 33,
+    "id": 34,
     "module": "VI. Organizations",
     "topic": "Administration",
     "subTopic": "License & Access Management",
@@ -297,7 +306,7 @@
     "moduleDescription": "Learn how to implement, manage, and scale GitHub Copilot across your organization."
   },
   {
-    "id": 34,
+    "id": 35,
     "module": "VI. Organizations",
     "topic": "Administration",
     "subTopic": "Policy Management",
@@ -306,7 +315,7 @@
     "moduleDescription": "Learn how to implement, manage, and scale GitHub Copilot across your organization."
   },
   {
-    "id": 35,
+    "id": 36,
     "module": "VI. Organizations",
     "topic": "Administration",
     "subTopic": "Content Exclusion",
@@ -315,7 +324,7 @@
     "moduleDescription": "Learn how to implement, manage, and scale GitHub Copilot across your organization."
   },
   {
-    "id": 36,
+    "id": 37,
     "module": "VI. Organizations",
     "topic": "Security",
     "subTopic": "IP Indemnity Explained",
@@ -324,7 +333,7 @@
     "moduleDescription": "Learn how to implement, manage, and scale GitHub Copilot across your organization."
   },
   {
-    "id": 37,
+    "id": 38,
     "module": "VI. Organizations",
     "topic": "Strategy",
     "subTopic": "Driving Team Adoption",
@@ -333,7 +342,7 @@
     "moduleDescription": "Learn how to implement, manage, and scale GitHub Copilot across your organization."
   },
   {
-    "id": 38,
+    "id": 39,
     "module": "VI. Organizations",
     "topic": "Strategy",
     "subTopic": "Measuring Impact (ROI)",
