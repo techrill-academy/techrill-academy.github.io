@@ -3,7 +3,7 @@
   <div class="mb-8">
     <button 
       routerLink="/" 
-      class="back-button inline-flex items-center text-red-600 hover:text-red-800 mb-4 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded-lg px-2 py-1"
+      class="back-button inline-flex items-center text-orange-600 hover:text-orange-800 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded-lg px-2 py-1"
       aria-label="Go back to TechRill landing page">
       <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -14,7 +14,7 @@
     <div class="security-header text-white p-8 md:p-12 rounded-3xl shadow-xl">
       <div class="text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">GitHub Advanced Security</h1>
-        <p class="text-xl md:text-2xl text-red-100 max-w-4xl mx-auto">
+        <p class="text-xl md:text-2xl text-orange-100 max-w-4xl mx-auto">
           Comprehensive security modules to protect your codebase and streamline security workflows
         </p>
       </div>
@@ -64,6 +64,20 @@
               {{ module.description }}
             </p>
             
+            <!-- Video Embed if available -->
+            @if (module.videoUrl) {
+              <div class="mb-6">
+                <iframe 
+                  [src]="module.videoUrl" 
+                  class="w-full h-64 rounded-lg border border-gray-200"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  [title]="module.title + ' video tutorial'">
+                </iframe>
+              </div>
+            }
+            
             <div class="grid md:grid-cols-2 gap-4">
               <div>
                 <h4 class="text-lg font-semibold text-gray-800 mb-3">Key Features</h4>
@@ -75,7 +89,7 @@
               </div>
               
               <div class="flex items-end">
-                <button class="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-xl font-semibold transition-colors focus:outline-none focus:ring-4 focus:ring-red-300">
+                <button class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 px-6 rounded-xl font-semibold transition-colors focus:outline-none focus:ring-4 focus:ring-orange-300">
                   Learn More
                 </button>
               </div>
@@ -87,19 +101,19 @@
   </div>
 
   <!-- Getting Started Section -->
-  <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 md:p-12 rounded-3xl shadow-xl">
+  <div class="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-8 md:p-12 rounded-3xl shadow-xl">
     <div class="text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Secure Your Code?</h2>
-      <p class="text-xl text-red-100 mb-8 max-w-3xl mx-auto">
+      <p class="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
         Start implementing advanced security practices in your development workflow today.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button class="bg-white text-red-600 py-3 px-8 rounded-xl font-semibold hover:bg-gray-50 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
+        <button class="bg-white text-orange-600 py-3 px-8 rounded-xl font-semibold hover:bg-gray-50 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
           Get Started
         </button>
         <button 
           routerLink="/overview"
-          class="border-2 border-white text-white py-3 px-8 rounded-xl font-semibold hover:bg-white hover:text-red-600 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
+          class="border-2 border-white text-white py-3 px-8 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
           Explore Copilot First
         </button>
       </div>
@@ -111,8 +125,8 @@
     <h2 class="text-2xl font-bold text-gray-800 mb-6">Additional Resources</h2>
     <div class="grid md:grid-cols-3 gap-6">
       <div class="text-center p-4">
-        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-          <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
@@ -121,8 +135,8 @@
       </div>
       
       <div class="text-center p-4">
-        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-          <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
             <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
           </svg>
         </div>
@@ -131,8 +145,8 @@
       </div>
       
       <div class="text-center p-4">
-        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-          <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
             <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
           </svg>
         </div>
