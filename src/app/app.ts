@@ -9,5 +9,5 @@ import { Navigation } from './components/navigation/navigation';
   styleUrl: './app.scss'
 })
 export class App {
-  title = 'GitHub Copilot Mastery';
+  title = 'TechRill Academy';
 }
