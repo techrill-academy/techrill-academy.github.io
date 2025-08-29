@@ -54,7 +54,7 @@ export class ModuleDetail implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/explorer']);
+    this.router.navigate(['/copilot']);
   }
 
   getVideoIcon(hasVideo: boolean): string {

@@ -1,28 +1,117 @@
-<nav class="flex justify-center mb-8 md:mb-12 bg-white/50 backdrop-blur-sm sticky top-4 z-10 p-2 rounded-full shadow-sm border border-gray-200 w-fit mx-auto"
-     role="navigation" 
-     aria-label="Main navigation">
-  <a routerLink="/landing" 
-     routerLinkActive="active" 
-     class="nav-button text-sm md:text-base font-medium py-2 px-4 rounded-full"
-     role="button"
-     tabindex="0"
-     aria-label="Navigate to TechRill Home">
-    Home
-  </a>
-  <a routerLink="/explorer" 
-     routerLinkActive="active" 
-     class="nav-button text-sm md:text-base font-medium py-2 px-4 rounded-full"
-     role="button"
-     tabindex="0"
-     aria-label="Navigate to Copilot Explorer">
-    Copilot
-  </a>
-  <a routerLink="/advanced-security" 
-     routerLinkActive="active" 
-     class="nav-button text-sm md:text-base font-medium py-2 px-4 rounded-full"
-     role="button"
-     tabindex="0"
-     aria-label="Navigate to Advanced Security">
-    Security
-  </a>
-</nav>
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8" 
+       role="navigation" 
+       aria-label="Main navigation">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo/Brand -->
+      <div class="flex items-center">
+        <img src="/assets/img/techrill-logo.png" 
+             alt="TechRill Academy" 
+             class="h-8 w-auto mr-3">
+        <span class="text-xl font-bold text-gray-900 hidden sm:block">TechRill Academy</span>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          <a routerLink="/landing" 
+             routerLinkActive="active" 
+             class="nav-link flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out"
+             role="button"
+             tabindex="0"
+             aria-label="Navigate to TechRill Home">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Home
+          </a>
+          <a routerLink="/copilot" 
+             routerLinkActive="active" 
+             class="nav-link flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out"
+             role="button"
+             tabindex="0"
+             aria-label="Navigate to Copilot Explorer">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+            Copilot
+          </a>
+          <a routerLink="/advanced-security" 
+             routerLinkActive="active" 
+             class="nav-link flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out"
+             role="button"
+             tabindex="0"
+             aria-label="Navigate to Advanced Security">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            Security
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button type="button" 
+                class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                aria-controls="mobile-menu" 
+                aria-expanded="false"
+                (click)="toggleMobileMenu()"
+                aria-label="Toggle mobile menu">
+          <span class="sr-only">Open main menu</span>
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" [class.hidden]="isMobileMenuOpen()">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" [class.block]="isMobileMenuOpen()" [class.hidden]="!isMobileMenuOpen()">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden transition-all duration-300 ease-in-out" 
+         [class.block]="isMobileMenuOpen()" 
+         [class.hidden]="!isMobileMenuOpen()" 
+         id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+        <a routerLink="/landing" 
+           routerLinkActive="active" 
+           class="mobile-nav-link flex items-center px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ease-in-out"
+           role="button"
+           tabindex="0"
+           (click)="closeMobileMenu()"
+           aria-label="Navigate to TechRill Home">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          Home
+        </a>
+        <a routerLink="/copilot" 
+           routerLinkActive="active" 
+           class="mobile-nav-link flex items-center px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ease-in-out"
+           role="button"
+           tabindex="0"
+           (click)="closeMobileMenu()"
+           aria-label="Navigate to Copilot Explorer">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          </svg>
+          Copilot
+        </a>
+        <a routerLink="/advanced-security" 
+           routerLinkActive="active" 
+           class="mobile-nav-link flex items-center px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ease-in-out"
+           role="button"
+           tabindex="0"
+           (click)="closeMobileMenu()"
+           aria-label="Navigate to Advanced Security">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          Security
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

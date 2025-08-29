@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: Landing },
   { path: 'overview', component: Overview },
-  { path: 'explorer', component: CurriculumExplorer },
+  { path: 'copilot', component: CurriculumExplorer },
   { path: 'module/:id', component: ModuleDetail },
   { path: 'roadmap', component: ContentRoadmap },
   { path: 'advanced-security', component: AdvancedSecurity },

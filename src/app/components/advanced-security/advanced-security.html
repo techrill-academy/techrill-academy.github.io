@@ -1,8 +1,7 @@
 <section class="space-y-8" role="main">
   <!-- Header -->
   <div class="mb-8">
-    <button 
-      routerLink="/" 
+    <button routerLink="/"
       class="back-button inline-flex items-center text-orange-600 hover:text-orange-800 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded-lg px-2 py-1"
       aria-label="Go back to TechRill landing page">
       <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -10,7 +9,7 @@
       </svg>
       Back to TechRill
     </button>
-    
+
     <div class="security-header text-white p-8 md:p-12 rounded-3xl shadow-xl">
       <div class="text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">GitHub Advanced Security</h1>
@@ -47,56 +46,68 @@
   <!-- Security Modules -->
   <div class="grid gap-6">
     @for (module of securityModules; track module.id) {
-      <div class="module-card bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
-        <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-          
-          <!-- Icon and Title -->
-          <div class="lg:w-1/4">
-            <div class="icon-container">
-              {{ module.icon }}
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 text-center lg:text-left">{{ module.title }}</h3>
+    <div class="module-card bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+      <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+
+        <!-- Icon and Title -->
+        <div class="lg:w-1/4">
+          <div class="icon-container">
+            {{ module.icon }}
           </div>
-          
-          <!-- Description and Features -->
-          <div class="lg:w-3/4">
-            <p class="text-gray-600 leading-relaxed mb-6">
-              {{ module.description }}
-            </p>
-            
-            <!-- Video Embed if available -->
-            @if (module.videoUrl) {
-              <div class="mb-6">
-                <iframe 
-                  [src]="module.videoUrl" 
-                  class="w-full h-64 rounded-lg border border-gray-200"
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                  [title]="module.title + ' video tutorial'">
-                </iframe>
-              </div>
-            }
-            
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="text-lg font-semibold text-gray-800 mb-3">Key Features</h4>
-                <ul class="feature-list">
-                  @for (feature of module.features; track feature) {
-                    <li class="text-gray-600">{{ feature }}</li>
-                  }
-                </ul>
-              </div>
-              
-              <div class="flex items-end">
-                <button class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 px-6 rounded-xl font-semibold transition-colors focus:outline-none focus:ring-4 focus:ring-orange-300">
-                  Learn More
-                </button>
-              </div>
+          <h3 class="text-xl font-bold text-gray-800 text-center lg:text-left">{{ module.title }}</h3>
+        </div>
+
+        <!-- Description and Features -->
+        <div class="lg:w-3/4">
+          <p class="text-gray-600 leading-relaxed mb-6">
+            {{ module.description }}
+          </p>
+
+          <!-- Video Embed if available -->
+          @if (module.videoUrl) {
+          <div class="mb-6">
+
+            <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+              <iframe [src]="getEmbedUrl(module.videoUrl)" class="w-full h-full" frameborder="0" allowfullscreen
+                [title]="'Video: ' + module.title" loading="lazy">
+              </iframe>
+
+            </div>
+            <div class="mt-2 flex items-center text-sm text-gray-500">
+              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z">
+                </path>
+              </svg>
+              <a [href]="module.videoUrl" target="_blank" rel="noopener noreferrer"
+                class="text-blue-600 hover:text-blue-800 focus:outline-none focus:underline"
+                [attr.aria-label]="'Watch ' + module.title + ' video on YouTube'">
+                Watch on YouTube
+              </a>
+            </div>
+          </div>
+          }
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">Key Features</h4>
+              <ul class="feature-list">
+                @for (feature of module.features; track feature) {
+                <li class="text-gray-600">{{ feature }}</li>
+                }
+              </ul>
+            </div>
+
+            <div class="flex items-end">
+              <button
+                class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 px-6 rounded-xl font-semibold transition-colors focus:outline-none focus:ring-4 focus:ring-orange-300">
+                Learn More
+              </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
     }
   </div>
 
@@ -108,11 +119,11 @@
         Start implementing advanced security practices in your development workflow today.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button class="bg-white text-orange-600 py-3 px-8 rounded-xl font-semibold hover:bg-gray-50 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
+        <button
+          class="bg-white text-orange-600 py-3 px-8 rounded-xl font-semibold hover:bg-gray-50 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
           Get Started
         </button>
-        <button 
-          routerLink="/overview"
+        <button routerLink="/copilot"
           class="border-2 border-white text-white py-3 px-8 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
           Explore Copilot First
         </button>
@@ -127,27 +138,28 @@
       <div class="text-center p-4">
         <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
           <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
         <h3 class="text-lg font-semibold text-gray-800 mb-2">Documentation</h3>
         <p class="text-gray-600 text-sm">Comprehensive guides and API references</p>
       </div>
-      
+
       <div class="text-center p-4">
         <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
           <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
           </svg>
         </div>
         <h3 class="text-lg font-semibold text-gray-800 mb-2">Community</h3>
         <p class="text-gray-600 text-sm">Join our community of security-minded developers</p>
       </div>
-      
+
       <div class="text-center p-4">
         <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
           <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+            <path
+              d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
           </svg>
         </div>
         <h3 class="text-lg font-semibold text-gray-800 mb-2">Support</h3>
