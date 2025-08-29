@@ -8,8 +8,10 @@ import { CurriculumItem, Module } from '../models/curriculum.model';
   providedIn: 'root'
 })
 export class CurriculumService {
-  private curriculumData: CurriculumItem[] = [];
+  private modules: Module[] = [];
+  private allItems: CurriculumItem[] = [];
   private dataSubject = new BehaviorSubject<CurriculumItem[]>([]);
+  private modulesSubject = new BehaviorSubject<Module[]>([]);
   private dataLoaded = false;
 
   constructor(private http: HttpClient) {
@@ -17,18 +19,32 @@ export class CurriculumService {
   }
 
   private loadCurriculumData(): void {
-    this.http.get<CurriculumItem[]>('/assets/data/curriculum-data.json')
+    this.http.get<Module[]>('/assets/data/curriculum-data.json')
       .pipe(
         catchError(error => {
           console.error('Error loading curriculum data:', error);
           return of([]);
         })
       )
-      .subscribe(data => {
-        this.curriculumData = data;
-        this.dataSubject.next(data);
+      .subscribe(modules => {
+        this.modules = modules;
+        this.modulesSubject.next(modules);
+        
+        // Flatten the modules into a list of items for backwards compatibility
+        this.allItems = this.flattenModulesToItems(modules);
+        this.dataSubject.next(this.allItems);
         this.dataLoaded = true;
       });
+  }
+
+  private flattenModulesToItems(modules: Module[]): CurriculumItem[] {
+    const items: CurriculumItem[] = [];
+    modules.forEach(module => {
+      module.topics.forEach(topic => {
+        items.push(...topic.subtopics);
+      });
+    });
+    return items;
   }
 
   getAllItems(): Observable<CurriculumItem[]> {
@@ -36,48 +52,11 @@ export class CurriculumService {
   }
 
   getModules(): Observable<Module[]> {
-    const modules = this.groupByModule();
-    return new BehaviorSubject(modules).asObservable();
+    return this.modulesSubject.asObservable();
   }
 
   getModuleById(moduleId: string): Observable<Module | undefined> {
-    const modules = this.groupByModule();
-    const module = modules.find(m => m.id === moduleId);
+    const module = this.modules.find(m => m.id === moduleId);
     return new BehaviorSubject(module).asObservable();
-  }
-
-  private groupByModule(): Module[] {
-    const moduleMap = new Map<string, Module>();
-    
-    this.curriculumData.forEach(item => {
-      const moduleId = item.module.split('.')[0].trim();
-      const moduleName = item.module;
-      
-      if (!moduleMap.has(moduleId)) {
-        moduleMap.set(moduleId, {
-          id: moduleId,
-          name: moduleName,
-          description: item.moduleDescription || '',
-          topics: []
-        });
-      }
-      
-      const module = moduleMap.get(moduleId)!;
-      let topic = module.topics.find(t => t.name === item.topic);
-      
-      if (!topic) {
-        topic = {
-          id: `${moduleId}-${item.topic.toLowerCase().replace(/\s+/g, '-')}`,
-          moduleId: moduleId,
-          name: item.topic,
-          subtopics: []
-        };
-        module.topics.push(topic);
-      }
-      
-      topic.subtopics.push(item);
-    });
-    
-    return Array.from(moduleMap.values());
   }
 }
